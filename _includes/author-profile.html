@@ -2,36 +2,49 @@
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
 {% endif %}
 
-<div itemscope itemtype="http://schema.org/Person" class="profile_box">
+<div itemscope itemtype="http://schema.org/Person" class="profile_box jun-profile">
 
-  <div class="author__avatar">
-    <img src="{{ author.avatar }}" class="author__avatar" alt="{{ author.name }}">
+  <div class="author__avatar jun-profile-avatar">
+    <img src="{{ author.avatar }}" class="jun-profile-photo" alt="{{ author.name }}">
   </div>
 
+  {% if author.bio %}
   <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    <p class="author__bio">{{ author.bio }}</p>
   </div>
+  {% endif %}
 
   <div class="author__urls-wrapper">
     <!-- <button class="btn btn--inverse">More Info & Contact</button> -->
     <ul class="author__urls social-icons">
-      {% if site.description %}
+      <!-- {% if site.description %}
         <li><div style="white-space: normal; margin-bottom: 1em;">{{ site.description }}</div></li>
-      {% endif %}
+      {% endif %} -->
       {% if author.location %}
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
+        <li class="jun-contact-item">
+          <span class="jun-contact-icon">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          </span>
+          <span class="jun-contact-text">{{ author.location }}</span>
+        </li>
       {% endif %}
-      {% if author.employer %}
+      <!-- {% if author.employer %}
         <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.employer }}</li>
-      {% endif %}
-      {% if author.uri %}
+      {% endif %} -->
+      <!-- {% if author.uri %}
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
-      {% endif %}
+      {% endif %} -->
       {% if author.email %}
-        <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+        <li class="jun-contact-item">
+          <a href="mailto:{{ author.email }}">
+            <span class="jun-contact-icon">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </span>
+            <span class="jun-contact-text">Email</span>
+          </a>
+        </li>
       {% endif %}
-      {% if author.keybase %}
+      <!-- {% if author.keybase %}
         <li><a href="https://keybase.io/{{ author.keybase }}"><i class="fas fa-fw fa-key" aria-hidden="true"></i> Keybase</a></li>
       {% endif %}
        {% if author.researchgate %}
@@ -102,9 +115,16 @@
       {% endif %}
       {% if author.vine %}
         <li><a href="https://vine.co/u/{{ author.vine }}"><i class="fab fa-fw fa-vine" aria-hidden="true"></i> Vine</a></li>
-      {% endif %}
+      {% endif %} -->
       {% if author.googlescholar %}
-        <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+        <li class="jun-contact-item">
+          <a href="{{ author.googlescholar }}" target="_blank" rel="noopener noreferrer">
+            <span class="jun-contact-icon">
+              <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            </span>
+            <span class="jun-contact-text">Google Scholar</span>
+          </a>
+        </li>
       {% endif %}
       {% if author.pubmed %}
         <li><a href="{{ author.pubmed }}"><i class="ai ai-pubmed-square ai-fw"></i> PubMed</a></li>

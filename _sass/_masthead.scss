@@ -2,63 +2,405 @@
    MASTHEAD
    ========================================================================== */
 
+
+/* =========================================================
+   Masthead container
+   ========================================================= */
+
 .masthead {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  border-bottom: 1px solid $border-color;
+  /* Do not stick to top when scrolling */
+  position: relative;
+  top: auto;
+
+  background: #fff;
+
+  border-bottom: none;
+  box-shadow: none;
+
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
+
   -webkit-animation-delay: 0.15s;
           animation-delay: 0.15s;
+
   z-index: 20;
+}
 
-  &__inner-wrap {
-    @include container;
-    @include clearfix;
-    padding: .5em;
-    font-family: $sans-serif-narrow;
 
-    @include breakpoint($x-large) {
-      max-width: $x-large;
-    }
+/* Soft gradient divider */
+.masthead::after {
+  content: "";
 
-    nav {
-      z-index: 10;
-    }
+  position: absolute;
 
-    a {
-      text-decoration: none;
-    }
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 2%,
+    rgba(96, 145, 182, 0.14) 20%,
+    rgba(114, 139, 183, 0.24) 40%,
+    rgba(151, 127, 174, 0.23) 60%,
+    rgba(96, 145, 182, 0.14) 80%,
+    transparent 98%
+  );
+}
+
+
+/* =========================================================
+   Masthead inner container
+   ========================================================= */
+
+.masthead__inner-wrap {
+  @include clearfix;
+
+  /*
+   * 关键：
+   * 这里约等于下面 profile 的左边缘。
+   *
+   * 3.8vw 在你当前桌面宽度下大约是 75~80px，
+   * 比之前 5.4vw 更符合截图里的头像位置。
+   */
+  padding:
+    2px
+    clamp(2rem, 3.8vw, 5rem)
+    2px !important;
+
+  max-width: none !important;
+
+  margin: 0 !important;
+
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  nav {
+    z-index: 10;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
+
+
+/* =========================================================
+   Menu reset
+   ========================================================= */
 
 .masthead__menu {
 
   ul {
     margin: 0;
     padding: 0;
+
     clear: both;
+
     list-style-type: none;
   }
 }
 
-.masthead__menu-home-item {
-  @include breakpoint($medium) {
-    display: block !important;
-  }
-  display: none !important;
-}
 
 .masthead__menu-item {
   display: block;
-  list-style-type: none;
-  white-space: nowrap;
 
-  &--lg {
-    padding-right: 2em;
-    font-weight: 700;
-  }
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+
+  white-space: nowrap;
 }
 
 
+/*
+ * Legacy rule.
+ * Your current masthead.html no longer uses this item,
+ * but keeping it does no harm.
+ */
+.masthead__menu-home-item {
+  display: none !important;
+}
+
+
+
+/* =========================================================
+   Desktop layout
+   ========================================================= */
+
+.greedy-nav {
+  position: relative;
+
+  display: grid !important;
+
+  /*
+   * 左列 ≈ profile image width
+   *
+   * 页面关系：
+   *
+   * [ 292px profile/signature ]
+   *          102px gap
+   * [ main text / navigation ]
+   */
+  grid-template-columns:
+    292px
+    minmax(0, 1fr);
+
+  column-gap: 102px;
+
+  align-items: center;
+
+  min-height: 46px !important;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent !important;
+}
+
+
+
+/* =========================================================
+   Signature
+   ========================================================= */
+
+.masthead__signature {
+  grid-column: 1;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  width: 292px;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  line-height: 1;
+  text-decoration: none !important;
+
+  transform: translateX(-12px);
+}
+
+
+/* Remove theme underline / pseudo elements */
+.masthead__signature::before,
+.masthead__signature::after {
+  display: none !important;
+
+  content: none !important;
+}
+
+
+/* Signature image */
+.masthead__signature img {
+  display: block;
+
+  /*
+   * 你现在这个裁切后的 PNG，
+   * 180px 我觉得和 masthead 高度比较平衡。
+   */
+  width: 180px;
+  height: auto;
+
+  max-width: none !important;
+
+  object-fit: contain;
+  object-position: center center;
+
+  margin: 0 !important;
+  padding: 8px !important;
+
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+
+.greedy-nav .visible-links {
+  grid-column: 2;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+
+  justify-self: start !important;
+
+  width: auto !important;
+
+  gap: 2.15rem;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  /* Align navigation with the main content column */
+  transform: translateX(-95px);
+}
+
+
+.greedy-nav .visible-links > li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.greedy-nav .visible-links > li > a {
+  position: relative;
+  display: inline-block;
+
+  margin: 0 !important;
+  padding: 5px 0 !important;
+
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  font-size: 1.02rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.012em;
+
+  color: #66707b !important;
+
+  text-decoration: none !important;
+
+  transition: color 0.18s ease;
+}
+
+
+
+/* =========================================================
+   Navigation hover
+   ========================================================= */
+
+.greedy-nav .visible-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 1.5px;
+
+  background: linear-gradient(
+    90deg,
+    #628fb5,
+    #967caf
+  );
+
+  transform: scaleX(0);
+
+  transform-origin: left center;
+
+  transition:
+    transform 0.18s ease;
+}
+
+
+.greedy-nav .visible-links a:hover {
+  color: #3f6079 !important;
+}
+
+
+.greedy-nav .visible-links a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+/* =========================================================
+   Greedy Navigation Button
+   ========================================================= */
+
+.greedy-nav > button {
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  margin: 0;
+
+  transform: translateY(-50%);
+}
+
+
+
+/* =========================================================
+   Mobile / Tablet
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .masthead__inner-wrap {
+    padding:
+      3px
+      1.25rem
+      3px !important;
+  }
+
+
+  /*
+   * 手机端不再使用 292 + 102 的桌面 grid，
+   * 改回横向 flex。
+   */
+  .greedy-nav {
+    display: flex !important;
+
+    align-items: center;
+
+    min-height: 42px !important;
+  }
+
+
+  .masthead__signature {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    width: auto;
+
+    flex: 0 0 auto;
+
+    margin: 0 1.25rem 0 0 !important;
+  }
+
+
+  .masthead__signature img {
+    width: 150px;
+    height: auto;
+  }
+
+
+  .greedy-nav .visible-links {
+    display: flex !important;
+
+    flex: 1 1 auto;
+
+    gap: 1rem;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+  .greedy-nav .visible-links a {
+    margin: 0 !important;
+
+    font-size: 0.95rem !important;
+  }
+}

@@ -1,0 +1,120 @@
+/* =========================================================
+   Jun-Hsiang Yao — Profile
+   ========================================================= */
+
+.jun-profile {
+  padding-top: 0;
+}
+
+
+/* ---------------- Portrait ---------------- */
+
+.jun-profile .jun-profile-avatar {
+  width: 110% !important;
+  max-width: none !important;
+
+  /* 保持居中 */
+  margin-left: -5% !important;
+  margin-bottom: 24px !important;
+
+  padding: 0 !important;
+
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.jun-profile .jun-profile-photo {
+  display: block;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 18px !important;
+
+  border: none !important;
+  box-shadow: none !important;
+
+  margin: 0 !important;
+}
+
+
+/* ---------------- Contact list ---------------- */
+
+.jun-profile .author__urls {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.jun-profile .jun-contact-item {
+  display: flex;
+  align-items: center;
+
+  margin: 0 0 11px 0 !important;
+  padding: 0 !important;
+
+  list-style: none;
+
+  color: #59616b;
+
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.jun-profile .jun-contact-item > a {
+  display: inline-flex;
+  align-items: center;
+
+  color: #59616b;
+  text-decoration: none !important;
+
+  transition: color 0.15s ease;
+}
+
+
+/* ---------------- Icons ---------------- */
+
+.jun-profile .jun-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  flex: 0 0 20px;
+
+  /* 原先 10~12px，现在缩小 */
+  margin-right: 7px;
+
+  padding: 0;
+
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  color: #59616b;
+}
+
+.jun-profile .jun-contact-icon i {
+  width: auto !important;
+  margin: 0 !important;
+
+  color: inherit !important;
+
+  font-size: 1rem;
+}
+
+.jun-profile .jun-contact-item > a:hover {
+  color: #287bb5;
+}
+
+/* 关闭左侧 profile/sidebar 的 sticky 效果 */
+.sidebar,
+.sidebar.sticky,
+.sticky {
+  position: static !important;
+  top: auto !important;
+}
