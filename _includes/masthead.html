@@ -1,12 +1,12 @@
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
+      <nav class="site-nav" aria-label="Main navigation">
 
         <!-- Left: Signature -->
         <a class="masthead__signature"
            href="{{ '/' | relative_url }}"
-           aria-label="Homepage">
+           aria-label="Homepage" target="_self">
           <img
             src="{{ '/images/signature.png' | relative_url }}"
             alt="Jun-Hsiang Yao signature">
@@ -16,17 +16,10 @@
         <ul class="visible-links">
           {% for link in site.data.navigation.main %}
             <li class="masthead__menu-item">
-              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+              <a href="{{ domain }}{{ link.url }}" target="_self">{{ link.title }}</a>
             </li>
           {% endfor %}
         </ul>
-
-        <!-- Mobile menu button -->
-        <button aria-label="Open navigation menu">
-          <div class="navicon"></div>
-        </button>
-
-        <ul class="hidden-links hidden"></ul>
 
       </nav>
     </div>

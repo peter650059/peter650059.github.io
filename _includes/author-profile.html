@@ -16,7 +16,7 @@
 
   <div class="author__urls-wrapper">
     <!-- <button class="btn btn--inverse">More Info & Contact</button> -->
-    <ul class="author__urls social-icons">
+    <ul class="jun-contact-list social-icons">
       <!-- {% if site.description %}
         <li><div style="white-space: normal; margin-bottom: 1em;">{{ site.description }}</div></li>
       {% endif %} -->
@@ -36,11 +36,11 @@
       {% endif %} -->
       {% if author.email %}
         <li class="jun-contact-item">
-          <a href="mailto:{{ author.email }}">
+          <a href="mailto:{{ author.email }}" target="_self">
             <span class="jun-contact-icon">
               <i class="fas fa-envelope" aria-hidden="true"></i>
             </span>
-            <span class="jun-contact-text">Email</span>
+            <span class="jun-contact-text">{{ author.email }}</span>
           </a>
         </li>
       {% endif %}
