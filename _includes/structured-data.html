@@ -1,0 +1,40 @@
+{% assign homepage_url = '/' | absolute_url %}
+{% assign website_id = homepage_url | append: '#website' %}
+{% assign person_id = homepage_url | append: '#person' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": {{ website_id | jsonify }},
+      "name": {{ site.title | jsonify }},
+      "alternateName": {{ site.alternate_names | jsonify }},
+      "url": {{ homepage_url | jsonify }},
+      "publisher": { "@id": {{ person_id | jsonify }} }
+    },
+    {
+      "@type": "Person",
+      "@id": {{ person_id | jsonify }},
+      "name": {{ site.author.name | jsonify }},
+      "alternateName": {{ site.author.alternate_names | jsonify }},
+      "url": {{ homepage_url | jsonify }},
+      "image": {{ site.author.avatar | absolute_url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "jobTitle": {{ site.author.job_title | jsonify }},
+      "affiliation": {
+        "@type": "Organization",
+        "name": {{ site.author.affiliation.name | jsonify }},
+        "parentOrganization": {
+          "@type": "CollegeOrUniversity",
+          "name": {{ site.author.affiliation.university | jsonify }}
+        }
+      },
+      {% if site.author.googlescholar %}
+      "sameAs": [{{ site.author.googlescholar | jsonify }}],
+      {% endif %}
+      "knowsAbout": {{ site.author.research_interests | jsonify }}
+    }
+  ]
+}
+</script>

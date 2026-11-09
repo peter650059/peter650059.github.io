@@ -6,8 +6,14 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Jun-Hsiang Yao"
-description              : "Jun-Hsiang Yao is a PhD student at Fudan University. His research focuses on Extended Reality (XR), Human-Computer Interaction (HCI), Data Visualization (VIS), and AI."
+title                    : "Jun-Hsiang Yao (姚闰翔)"
+description              : "Jun-Hsiang Yao (姚闰翔) is a PhD student at Fudan University. His research focuses on Augmented and Virtual Reality (AR/VR), Human-Computer Interaction (HCI), Data Visualization (VIS), and AI."
+url                      : "https://peter650059.github.io"
+baseurl                  : ""
+alternate_names:
+  - "Jun-Hsiang Yao"
+  - "Jun Hsiang Yao"
+  - "姚闰翔"
 repository               : "peter650059/peter650059.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -22,6 +28,18 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Jun-Hsiang Yao"
+  alternate_names:
+    - "姚闰翔"
+    - "Jun Hsiang Yao"
+  job_title        : "PhD Student"
+  affiliation:
+    name           : "School of Data Science"
+    university     : "Fudan University"
+  research_interests:
+    - "Augmented and Virtual Reality (AR/VR)"
+    - "Human-Computer Interaction (HCI)"
+    - "Data Visualization (VIS)"
+    - "Artificial Intelligence (AI)"
   avatar           : "images/android-chrome-512x512.png"
   bio              :
   location         :
@@ -126,6 +144,11 @@ defaults:
     values:
       layout: default
       author_profile: true
+  # Keep the Search Console token published, but out of the content sitemap.
+  - scope:
+      path: "google613fd477ba4be6bd.html"
+    values:
+      sitemap: false
 
 
 # Sass/SCSS
