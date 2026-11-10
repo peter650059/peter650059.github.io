@@ -11,6 +11,8 @@
 </script>
 
 <!-- For all browsers -->
+<!-- Apply the saved theme before CSS paints; a first visit always uses light. -->
+<script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
 <meta http-equiv="cleartype" content="on">

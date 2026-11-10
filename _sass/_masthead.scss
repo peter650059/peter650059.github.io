@@ -36,6 +36,7 @@
 
 .site-nav .visible-links {
   display: flex;
+  flex: 1 1 auto;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 32px;
@@ -46,6 +47,14 @@
 }
 
 .masthead__menu-item { margin: 0; padding: 0; }
+
+/* The control ends at the same container edge as the article text. */
+.masthead__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
 
 .site-nav .visible-links a {
   display: inline-flex;
@@ -68,5 +77,6 @@
 @media (max-width: 599px) {
   .site-nav { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .masthead__signature img { width: 150px; }
-  .site-nav .visible-links { justify-content: center; gap: 8px 28px; }
+  .masthead__actions { gap: 12px; }
+  .site-nav .visible-links { justify-content: center; gap: 8px 20px; }
 }
